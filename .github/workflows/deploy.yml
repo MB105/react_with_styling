@@ -2,9 +2,9 @@ name: Deploy Frontend to DigitalOcean
 
 on:
   push:
-    branches: [main] # Trigger on direct pushes to the main branch
+    branches: [master] # Trigger on direct pushes to the main branch...
   pull_request:
-    branches: [main] # Trigger when a pull request targeting main is merged/closed
+    branches: [master] # Trigger when a pull request targeting main is merged/closed.
 
 jobs:
   deploy:
@@ -28,7 +28,7 @@ jobs:
       - name: Set up SSH agent
         uses: webfactory/ssh-agent@v0.9.0
         with:
-          ssh-private-key: $ # The SSH private key stored in GitHub secrets.
+          DO_SSH_KEY: $ # The SSH private key stored in GitHub secrets.
 
       - name: Sync files to DigitalOcean Droplet using rsync
         run: |
